@@ -72,9 +72,11 @@
     <Compile Include="Book.cs">
       <DependentUpon>BkRegModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BookDB.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>BkRegModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomerDB.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
