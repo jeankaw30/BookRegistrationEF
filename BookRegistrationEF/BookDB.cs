@@ -8,6 +8,7 @@ namespace BookRegistrationEF
 {
     public static class BookDB
     {
+        /************* GET ALL BOOKS FROM DB**********/
         public static List<Book> GetAllBooks()
         {
             BkRegDBContext context = new BkRegDBContext();
@@ -17,8 +18,11 @@ namespace BookRegistrationEF
                                 select b
                                 ).ToList();
             return allBooks;
-        }
+        } // END ALL BOOKS
 
+
+
+        /************* ADD TO DB **********************/
         public static void Add(Book b)
         {
             BkRegDBContext context = new BkRegDBContext();
@@ -28,6 +32,8 @@ namespace BookRegistrationEF
             context.SaveChanges();
         }
 
+
+        /************* TWO DIFFERENT METHODS TO UPDATE DB ********/
         // Ef will track an object if you pull out of database and then do modifcations 
         public static void Update(Book b)
         {  // METHOD #1 :
@@ -54,6 +60,8 @@ namespace BookRegistrationEF
             context.SaveChanges();
         }
 
+
+        /***************TWO DIFFERENT METHODS TO DELETE FROM DB ****************/
         public static void Delete(Book b)
         {   // METHOD #1  
             var context = new BkRegDBContext();
@@ -63,5 +71,20 @@ namespace BookRegistrationEF
             context.Entry(b).State = System.Data.Entity.EntityState.Deleted;
             context.SaveChanges();
         }
+
+        public static void Delete(string isbn)
+        {
+            var context = new BkRegDBContext();
+
+            // pull book from DB to make EF track it
+            Book bookToDelete = context.Book.Find(isbn);
+
+            // mark book as deleted 
+            context.Book.Remove(bookToDelete);
+
+            // send delete query to DB
+            context.SaveChanges();
+        }
+
     }
 }
