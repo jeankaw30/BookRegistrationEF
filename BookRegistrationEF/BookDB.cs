@@ -8,6 +8,7 @@ namespace BookRegistrationEF
 {
     public static class BookDB
     {
+
         public static List<Book> GetAllBooks();
 
         public static void Add(Book b)
@@ -20,6 +21,18 @@ namespace BookRegistrationEF
 
         }
         
+=======
+        public static List<Book> GetAllBooks()
+        {
+            BkRegDBContext context = new BkRegDBContext();
+            List<Book> allBooks = 
+                                (
+                                from b in context.Book
+                                select b
+                                ).ToList();
+            return allBooks;
+        }
+
             
     }
 }
