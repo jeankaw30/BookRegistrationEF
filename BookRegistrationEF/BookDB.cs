@@ -26,7 +26,6 @@ namespace BookRegistrationEF
             // asume book vilid
             context.Book.Add(b);
             context.SaveChanges();
-
         }
     }
 }

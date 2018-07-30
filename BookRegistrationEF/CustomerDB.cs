@@ -15,13 +15,13 @@ namespace BookRegistrationEF
             return customers;
         }
 
-        public static void Add(Customer c )
+        public static void Add(Customer c)
         {
             BkRegDBContext context = new BkRegDBContext();
             // assume is valid
             context.Customer.Add(c);
             context.SaveChanges();
         }
-       
+
     }
 }
